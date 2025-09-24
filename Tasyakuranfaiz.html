@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Tasyakuran Khataman Al-Qur'an</title>
+  <meta name="description" content="Undangan Tasyakuran Khataman Al-Qur'an Faiz">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="adwa-assalaf.css">
+  <style>
+    /* Responsive mobile styles */
+    @media (max-width: 600px) {
+      .container {
+        max-width: 98vw;
+        margin: 12px auto;
+        padding: 10px 4vw 18px 4vw;
+        border-radius: 18px;
+      }
+      .splash-content {
+        max-width: 98vw;
+        padding: 24px 8vw 18px 8vw;
+        border-radius: 18px;
+      }
+      h1, h2, h3 {
+        font-size: 1.2em !important;
+      }
+      .info {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .hero-img {
+        max-height: 160px;
+        border-radius: 10px;
+      }
+      .map {
+        height: 160px;
+        border-radius: 10px;
+      }
+      .info-item, .acara, .catatan, .rsvp {
+        padding: 10px 8px;
+        font-size: 0.98em;
+      }
+      .rsvp button, .splash-content button {
+        padding: 10px 18px;
+        font-size: 1em;
+      }
+    }
+    /* Animasi fade, slide, scale */
+  /* .fade-in dihapus, tidak ada animasi fade-in */
+  .slide-up { opacity: 0; transform: translateY(40px); animation: slideUp 1s forwards; }
+  @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+  .fade-in { opacity: 0; animation: fadeIn 1.2s forwards; }
+  @keyframes fadeIn { to { opacity: 1; } }
+  .scale-in { opacity: 0; transform: scale(0.8); animation: scaleIn 1s forwards; }
+  @keyframes scaleIn { to { opacity: 1; transform: scale(1); } }
+    .gallery img { /* ...existing code... */ animation: galleryAnim 2.5s infinite alternate; }
+    @keyframes galleryAnim { 0% { box-shadow: 0 2px 8px rgba(0,0,0,0.04); transform: scale(1); } 100% { box-shadow: 0 8px 24px #a7f3d0; transform: scale(1.07) rotate(-2deg); } }
+    .hero-img { animation: heroAnim 2.5s infinite alternate; }
+    @keyframes heroAnim { 0% { filter: brightness(1); } 100% { filter: brightness(1.08) drop-shadow(0 0 12px #05966944); } }
+    /* Splash screen styles */
+    .splash-bg {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+  background: url('photo_2025-09-24_15-59-02.jpg') center center/cover no-repeat, linear-gradient(135deg, #05966999 0%, #f0fdf499 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.7s;
+    }
+    .splash-content {
+      background: rgba(255,255,255,0.95);
+      border-radius: 32px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      padding: 40px 32px 32px 32px;
+      text-align: center;
+      max-width: 350px;
+      position: relative;
+      animation: splashIn 1s cubic-bezier(.68,-0.55,.27,1.55), floatSplash 3s ease-in-out infinite alternate;
+    }
+    @keyframes floatSplash {
+      0% { transform: translateY(0px) scale(1); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+      50% { transform: translateY(-14px) scale(1.03); box-shadow: 0 16px 48px #05966944; }
+      100% { transform: translateY(0px) scale(1); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+    }
+    @keyframes splashIn {
+      0% { transform: scale(0.7) rotate(-8deg); opacity: 0; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .splash-content h1 {
+      color: #059669;
+      font-size: 2.1em;
+      margin-bottom: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .splash-content input {
+      width: 90%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #a7f3d0;
+      font-size: 1.1em;
+      margin-bottom: 18px;
+      font-family: inherit;
+      text-align: center;
+      transition: border 0.2s;
+    }
+    .splash-content input:focus {
+      border: 2px solid #059669;
+      outline: none;
+    }
+    .splash-content button {
+      background: #059669;
+      color: #fff;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      transition: background 0.2s;
+    }
+    .splash-content button:hover {
+      background: #065f46;
+    }
+    .splash-ornament {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 18px auto;
+      display: block;
+      opacity: 0.8;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      background: url('Foto Faiz halaman depan.jpg') center center/cover no-repeat, linear-gradient(135deg, #05966999 0%, #f0fdf499 100%);
+      color: #065f46;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: linear-gradient(135deg, #f0fdf4 0%, #e0e7ff 100%);
+      border-radius: 32px;
+      box-shadow: 0 8px 32px #a7f3d0, 0 0 0 8px #05966922;
+      padding: 36px 28px 32px 28px;
+      position: relative;
+      z-index: 1;
+      border: 6px solid #05966922;
+      transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+      animation: floatUndangan 3s ease-in-out infinite alternate;
+    }
+    @keyframes floatUndangan {
+      0% { transform: translateY(0px) scale(1); box-shadow: 0 8px 32px #a7f3d0, 0 0 0 8px #05966922; }
+      50% { transform: translateY(-12px) scale(1.02); box-shadow: 0 16px 48px #05966999, 0 0 0 12px #a7f3d0; }
+      100% { transform: translateY(0px) scale(1); box-shadow: 0 8px 32px #a7f3d0, 0 0 0 8px #05966922; }
+    }
+    .container:hover {
+      box-shadow: 0 16px 48px #05966999, 0 0 0 12px #a7f3d0;
+      border-color: #05966966;
+      transform: scale(1.01);
+    }
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 32px;
+      pointer-events: none;
+      border: 2px dashed #05966944;
+      z-index: 0;
+    }
+    h1, h2, h3 {
+      margin-top: 0;
+      color: #059669;
+      text-align: center;
+    }
+    .hero-img {
+      width: 100%;
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+    .info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .info-item {
+      background: #d1fae5;
+      border-radius: 12px;
+      padding: 16px 24px;
+      min-width: 180px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .acara {
+      margin: 32px 0 24px 0;
+      background: #f0fdf4;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .acara li {
+      margin-bottom: 8px;
+    }
+    .catatan {
+      font-size: 0.95em;
+      color: #065f46;
+      background: #e0f2fe;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 24px;
+    }
+    .map {
+      width: 100%;
+      height: 220px;
+      border-radius: 12px;
+      border: none;
+      margin-bottom: 16px;
+    }
+    .rsvp {
+      background: #f0fdf4;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+    .rsvp input, .rsvp select, .rsvp textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #a7f3d0;
+      font-family: inherit;
+    }
+    .rsvp button {
+      background: #059669;
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 8px;
+      transition: background 0.2s;
+    }
+    .rsvp button:hover {
+      background: #065f46;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.07);
+    }
+    .footer {
+      text-align: center;
+      color: #fff;
+      background: #059669;
+      border-radius: 12px;
+      padding: 18px;
+      font-size: 1em;
+      margin-top: 24px;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 12px; }
+      .info { flex-direction: column; gap: 12px; }
+      .gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="splash" class="splash-bg">
+  <div class="splash-content">
+      <div style="display:flex;justify-content:center;align-items:center;margin-bottom:18px;">
+        <div style="width:90px;height:90px;border-radius:50%;overflow:hidden;box-shadow:0 4px 16px #05966944;border:4px solid #a7f3d0;background:#fff;">
+          <img src="photo_2025-09-24_16-25-04.jpg" alt="Foto Faiz" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+      </div>
+  <h1 id="splashWelcome" style="font-size:2em;line-height:1.2;margin-bottom:10px;">Tasyakuran Khataman Qiraat Imam 'Ashim<br>riwayat Imam Syu'bah dan Hafs<br><span style="font-size:0.7em;font-weight:normal;">oleh Ahmad Faiz, L.c, Dipl.</span></h1>
+      <div id="kepadaYth" style="font-size:1.15em;color:#059669;font-weight:bold;margin-bottom:8px;">Kepada Yth.<span id="namaTamuSplash" style="display:block;font-size:1.1em;color:#065f46;font-weight:normal;margin-top:2px;"></span></div>
+
+  
+  <!-- input nama dihapus, hanya ambil dari URL -->
+  <button id="btnSplash" style="display:none;">Buka Undangan</button>
+  <p style="margin-top:18px;font-size:0.95em;color:#059669;">Semoga khataman ini dan kedatangan Anda menjadi keberkahan untuk majelis kita ini.</p>
+    </div>
+  </div>
+  <div class="container" id="mainUndangan" style="display:none;">
+    <section class="fade-in" style="text-align:center;margin-bottom:32px;animation-delay:0.2s;">
+      <h2 style="color:#059669;font-size:2em;margin-bottom:10px;">Undangan Tasyakuran Khataman Qur’an Qiraat Ashim, riwayat Syu'bah dan Hafs</h2>
+    </section>
+    <section class="slide-up" style="margin-bottom:32px;animation-delay:0.5s;">
+      <blockquote style="font-size:1.1em;color:#059669;background:#e0f2fe;border-radius:12px;padding:16px 18px;margin:18px auto;max-width:600px;">
+        <span class="arabic" style="font-weight:bold;">تَعَلَّمَ عُمَرُ سورةَ البقرة في اثنتي عشرةَ سنةً، فلمّا ختمها نَحَرَ جَزورًا.</span><br>
+        <span style="font-size:0.95em;color:#065f46;display:block;margin-top:8px;">“Sesungguhnya Sayyidina Umar RA mempelajari Surat al-Baqarah selama 12 tahun, kemudian ketika sudah menyelesaikannya beliau menyembelih seekor unta.”<br><i>Riwayat dari Al-Baihaqi dalam Syu’ab al-Iman</i></span>
+      </blockquote>
+      <p style="font-size:1.1em;color:#065f46;max-width:600px;margin:0 auto 18px auto;">Alhamdulillah, dengan karunia dan rahmat Allah, Saya, <b>Ahmad Faiz</b> telah menyelesaikan khataman Al-Qur’an.</p>
+      <p style="font-size:1.1em;color:#065f46;max-width:600px;margin:0 auto 18px auto;">Dengan nikmat ini, kami ingin mengajak Kakak, Adek, Teman, dan para ponakan untuk berbagi kegembiraan dan keberkahan serta taqlid dengan bid'ah hasanah Sayyidina Umar dalam acara Tasyakuran Khataman Qur’an saya:</p>
+    </section>
+    <section class="scale-in" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin-bottom:32px;animation-delay:0.8s;">
+      <div style="flex:1 1 260px;min-width:220px;max-width:340px;background:#f0fdf4;border-radius:18px;padding:18px 20px;box-shadow:0 2px 12px #05966922;">
+        <div style="font-size:1.1em;margin-bottom:10px;">📍 <b>Masjid Nadi Sikkah</b></div>
+        <a href="https://maps.app.goo.gl/d177XuwYQ1tx9ow99" target="_blank" style="color:#059669;text-decoration:underline;display:block;margin-bottom:10px;">Lihat di Google Maps</a>
+        <div style="font-size:1.1em;margin-bottom:10px;">📅 <b>30 September 2025</b></div>
+        <div style="font-size:1.1em;">� <b>13:00 CLT</b></div>
+      </div>
+      <div id="countdownBox" style="flex:1 1 260px;min-width:220px;max-width:340px;text-align:center;background:#e0e7ff;border-radius:18px;padding:18px 20px;box-shadow:0 2px 12px #05966922;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+        <span style="font-size:1.2em;font-weight:bold;color:#059669;letter-spacing:1px;">Menuju Acara:</span>
+        <div id="countdown" style="font-size:1.5em;font-weight:bold;color:#065f46;margin-top:6px;letter-spacing:2px;"></div>
+      </div>
+    </section>
+    <section class="fade-in" style="margin-bottom:32px;text-align:center;animation-delay:1.1s;">
+      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18..." allowfullscreen loading="lazy" title="Lokasi Masjid" style="max-width:100%;border-radius:16px;border:2px solid #05966922;"></iframe>
+    </section>
+    <section class="slide-up" style="margin-bottom:32px;text-align:center;animation-delay:1.4s;">
+      <p style="font-size:1.1em;color:#065f46;max-width:600px;margin:0 auto 18px auto;">Semoga Tasyakuran kali ini menambah keberkahan khataman saya kali ini</p>
+      <p style="font-size:1.1em;color:#059669;font-weight:bold;">Wassalamu’alaikum warahmatullahi wabarakatuh.</p>
+    </section>
+    <section style="margin-bottom:32px;text-align:center;">
+      <div class="rsvp slide-up" style="display:inline-block;background:#f0fdf4;border-radius:18px;padding:18px 24px;box-shadow:0 2px 12px #05966922;max-width:400px;">
+        
+      </div>
+    </section>
+  </div>
+<script>
+  // Countdown logic
+  function updateCountdown() {
+  // Set tanggal acara: Selasa, 30 September 2025, 13:00 CLT (UTC+2)
+  var eventDate = new Date('2025-09-30T13:00:00+02:00');
+    var now = new Date();
+    var diff = eventDate - now;
+    if (diff <= 0) {
+      document.getElementById('countdown').textContent = 'Acara telah dimulai!';
+      return;
+    }
+    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    var minutes = Math.floor((diff / (1000 * 60)) % 60);
+    var seconds = Math.floor((diff / 1000) % 60);
+    document.getElementById('countdown').textContent =
+      days + ' hari ' + hours + ' jam ' + minutes + ' menit ' + seconds + ' detik';
+  }
+  setInterval(updateCountdown, 1000);
+  document.addEventListener('DOMContentLoaded', updateCountdown);
+  // Ambil parameter nama dari URL
+  function getNamaFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var nama = params.get('nama');
+    return nama ? decodeURIComponent(nama) : '';
+  }
+
+  // Splash logic
+  function bukaUndangan() {
+    var nama = window.namaTamuGlobal || '';
+    document.getElementById('btnSplash').disabled = true;
+    document.getElementById('splash').style.opacity = 0;
+    setTimeout(function() {
+      document.getElementById('splash').style.display = 'none';
+      document.getElementById('mainUndangan').style.display = '';
+      document.getElementById('mainUndangan').style.animation = 'splashIn 0.8s';
+      document.getElementById('namaTamuDisplay').textContent = nama ? 'Kepada Yth. ' + nama : '';
+    }, 700);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var namaUrl = getNamaFromUrl();
+    var btn = document.getElementById('btnSplash');
+    btn.style.display = '';
+    btn.addEventListener('click', function(e) {
+      bukaUndangan();
+    });
+    if (namaUrl) {
+      window.namaTamuGlobal = namaUrl;
+      document.getElementById('namaTamuSplash').textContent = ' ' + namaUrl;
+    } else {
+      window.namaTamuGlobal = '';
+      document.getElementById('namaTamuSplash').textContent = '';
+    }
+    // Animasi delay pada elemen
+    var animatedEls = document.querySelectorAll('.fade-in, .slide-up, .scale-in');
+    animatedEls.forEach(function(el) {
+      var delay = el.style.animationDelay || '0s';
+      el.style.animationDelay = delay;
+    });
+  });
+// RSVP tampilkan hasil input di bawah form
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.getElementById('rsvpForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var nama = document.getElementById('rsvpNama').value;
+      var jumlah = document.getElementById('rsvpJumlah').value;
+      var wa = document.getElementById('rsvpWA').value;
+      var status = document.getElementById('rsvpStatus').value;
+      var pesan = document.getElementById('rsvpPesan').value;
+      var hasil = '<b>Nama:</b> ' + nama + '<br>' +
+                  '<b>Jumlah Hadir:</b> ' + jumlah + '<br>' +
+                  '<b>Nomor WA:</b> ' + wa + '<br>' +
+                  '<b>Kehadiran:</b> ' + status + '<br>' +
+                  (pesan ? ('<b>Pesan:</b> ' + pesan + '<br>') : '');
+      var box = document.getElementById('rsvpHasil');
+      box.innerHTML = '<div style="font-weight:bold;margin-bottom:6px;">Data Konfirmasi Anda:</div>' + hasil;
+      box.style.display = 'block';
+      form.reset();
+    });
+  }
+});
+</script>
+</body>
+</html>
