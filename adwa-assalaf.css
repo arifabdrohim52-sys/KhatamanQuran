@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'adwa-assalaf';
+  src: url('adwa-assalaf-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.arabic {
+  font-family: 'adwa-assalaf', serif;
+  font-size: 1.3em;
+  direction: rtl;
+  letter-spacing: 0.02em;
+}
