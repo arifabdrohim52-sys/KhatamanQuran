@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Tasyakuran Khataman Al-Qur'an</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+  <style>
+    :root{
+      --green:#059669;
+      --green-light:#a7f3d0;
+      --green-dark:#065f46;
+      --soft-blue:#e0f2fe;
+      --bg-light:#f0fdf4;
+    }
+    html,body{
+      margin:0;padding:0;
+      font-family:'Montserrat',sans-serif;
+      color:var(--green-dark);
+      background:linear-gradient(135deg,#f0fdf4 0%,#e0f2fe 100%);
+      overflow-x:hidden;
+    }
+
+    /* Background bintang */
+    body::before{
+      content:"";
+      position:fixed;inset:0;
+      background:radial-gradient(circle,#fff2 2px,transparent 3px) repeat;
+      background-size:80px 80px;
+      animation:moveStars 60s linear infinite;
+      z-index:-2;
+    }
+    @keyframes moveStars{from{background-position:0 0;}to{background-position:-1000px 1000px;}}
+
+    /* Splash */
+    #splash{
+      position:fixed;inset:0;
+      background:url('photo_2025-09-24_15-59-02.jpg') center/cover no-repeat;
+      display:flex;align-items:center;justify-content:center;
+      z-index:9999;
+      transition:opacity .8s;
+    }
+    .splash-content{
+      position:relative;
+      background:#ffffffdd;
+      border-radius:20px;
+      padding:20px 18px;
+      text-align:center;
+      max-width:300px;
+      box-shadow:0 8px 32px #0002;
+      animation:float 3s ease-in-out infinite alternate,fadeIn .8s ease;
+    }
+    @keyframes float{0%{transform:translateY(0)}100%{transform:translateY(-10px)}}
+    @keyframes fadeIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+    .splash-content h1{font-size:1.2em;color:var(--green);margin:10px 0;}
+    .splash-content button{
+      background:var(--green);color:#fff;border:none;
+      padding:8px 20px;border-radius:10px;font-size:.95em;
+      cursor:pointer;box-shadow:0 4px 14px #05966966;
+      transition:transform .2s,background .3s;
+    }
+    .splash-content button:hover{background:var(--green-dark);transform:scale(1.05)}
+
+    /* Hero parallax */
+    .hero {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+      display: none; /* Awal disembunyikan */
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('Foto Faiz halaman depan.jpg');
+      background-position: center top;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transform: translateY(0);
+      will-change: transform;
+      z-index: -1;
+    }
+    .hero-overlay {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.35);
+    }
+    .hero-title {
+      color: #fff;
+      font-size: 1.7em;
+      text-align: center;
+    }
+
+    /* Container */
+    .container{
+      max-width:800px;margin:30px auto 40px auto;padding:26px 20px;
+      background:var(--bg-light);
+      border-radius:28px;
+      box-shadow:0 12px 36px #05966933;
+      border:4px solid var(--green-light);
+      position:relative;
+      overflow:hidden;
+      display:none; /* Awal disembunyikan */
+    }
+
+    blockquote{
+      font-size:1em;
+      color:var(--green);
+      background:var(--soft-blue);
+      padding:14px 16px;
+      border-radius:14px;
+      max-width:600px;margin:16px auto;
+    }
+
+    .info-box{
+      display:flex;flex-wrap:wrap;gap:20px;justify-content:center;
+      margin:20px 0;
+    }
+    .info-item{
+      background:#d1fae5;
+      border-radius:18px;
+      padding:14px 18px;
+      min-width:200px;text-align:center;
+      box-shadow:0 4px 14px #05966922;
+    }
+    .countdown{
+      background:#e0e7ff;
+      padding:14px;border-radius:18px;
+      font-size:1.1em;
+      box-shadow:0 4px 14px #0001;
+    }
+
+    iframe.map{
+      width:100%;height:240px;border:0;border-radius:18px;margin:30px 0;
+      box-shadow:0 4px 16px #05966933;
+    }
+    p{text-align:center;max-width:640px;margin:0 auto 14px auto;font-size:1em;}
+    .footer{
+      text-align:center;
+      padding:18px;
+      color:#fff;
+      background:var(--green);
+      border-radius:0 0 28px 28px;
+      font-size:.9em;
+    }
+
+    /* Masjid fade-in */
+    .masjid-box {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .masjid-box img {
+      width: 200px;
+      max-width: 90%;
+    }
+    .masjid-box h3 {
+      margin-top: 12px;
+      font-size: 1.2em;
+      color: var(--green-dark);
+    }
+
+    /* Animasi fade-in hero */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Animasi fade-in per bagian */
+    .fade-seq {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInSeq 0.8s ease forwards;
+    }
+    @keyframes fadeInSeq {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === Animasi Dekorasi Floating === */
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(5, 150, 105, 0.15);
+      animation: floatMove 12s infinite ease-in-out;
+      z-index: -1;
+    }
+    .floating-shape.small { width: 20px; height: 20px; }
+    .floating-shape.medium { width: 35px; height: 35px; }
+    .floating-shape.large { width: 50px; height: 50px; }
+
+    @keyframes floatMove {
+      0%   { transform: translateY(0) translateX(0); }
+      25%  { transform: translateY(-40px) translateX(20px); }
+      50%  { transform: translateY(-80px) translateX(-10px); }
+      75%  { transform: translateY(-40px) translateX(10px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Splash -->
+  <div id="splash">
+    <div class="splash-content">
+      <img src="photo_2025-09-24_16-25-04.jpg" alt="Foto Faiz" style="width:70px;height:70px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px #05966944;border:3px solid var(--green-light);" />
+      <h1>Tasyakuran Ahmad Faiz dalam rangka Khataman Qiraat Imam 'Ashim<br><small>Riwayat Syu'bah & Hafs</small></h1>
+      <div id="kepadaYth" style="margin-bottom:10px;font-weight:bold;color:var(--green-dark)">Kepada Yth. <span id="namaTamuSplash"></span></div>
+      <button id="btnSplash">Buka Undangan</button>
+      <p style="font-size:.85em;color:var(--green)">Semoga kehadiran Anda membawa keberkahan untuk majelis ini.</p>
+    </div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="bgMusic" src="Musik.mp3" loop></audio>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay">
+      <h2 class="hero-title">Undangan Tasyakuran Khataman Qur’an</h2>
+    </div>
+  </section>
+
+  <!-- Main Undangan -->
+  <div class="container" id="mainUndangan">
+    <!-- Dekorasi Animasi -->
+    <div class="floating-shape small" style="top:50px; left:20px;"></div>
+    <div class="floating-shape medium" style="bottom:80px; right:40px; animation-delay:2s;"></div>
+    <div class="floating-shape large" style="top:120px; right:80px; animation-delay:4s;"></div>
+    <div class="floating-shape small" style="bottom:150px; left:60px; animation-delay:6s;"></div>
+
+    <blockquote>
+      <span>تَعَلَّمَ عُمَرُ سورةَ البقرة في اثنتي عشرةَ سنةً، فلمّا ختمها نَحَرَ جَزورًا.</span><br>
+      <small>“Sayyidina Umar RA mempelajari Surat Al-Baqarah selama 12 tahun, lalu menyembelih unta saat khatam.” <br><i>(Riwayat Al-Baihaqi dalam syu'ab Al-Iman)</i></small>
+    </blockquote>
+
+    <p>Alhamdulillah, dengan rahmat Allah, saya <b>Ahmad Faiz</b> telah menyelesaikan khataman Al-Qur’an Qiraat Imam ‘Ashim riwayat Syu’bah & Hafs.</p>
+    <p>Dengan penuh syukur, kami mengundang Kakak, Adik, ponakan dan Teman-teman sekalian untuk hadir dalam acara tasyakuran ini:</p>
+
+    <div class="info-box">
+      <div class="info-item countdown">Menuju Acara:<br><span id="countdown"></span></div>
+      <div class="info-item">📅 <b>30 September 2025</b><br>🕒 13:00 CLT</div>
+    </div>
+
+    <div class="masjid-box" id="masjidBox">
+      <img src="masjid.png" alt="Masjid" />
+      <h3>Tempat: Masjid At-Taqwa, Nadi Sikkah</h3>
+    </div>
+
+   
+    <!-- Tombol Google Maps -->
+<div class="btn-wrapper">
+  <a class="btn-maps" href="https://maps.app.goo.gl/SsoifTZnM1EtmGh38?g_st=aw" target="_blank">
+    📍 Lihat di Google Maps
+  </a>
+</div>
+
+<style>
+  .btn-wrapper {
+    text-align: center;
+    margin: 30px 0; /* jarak atas bawah biar lega */
+  }
+
+  .btn-maps {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #34a853, #0f9d58);
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .btn-maps:hover {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #0f9d58, #34a853);
+  }
+
+  .btn-maps:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+</style>
+
+<style>
+  .btn-maps {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #34a853, #0f9d58);
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .btn-maps:hover {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #0f9d58, #34a853);
+  }
+
+  .btn-maps:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+</style>
+
+    <p>Semoga majelis ini membawa keberkahan dan menambah kecintaan kita kepada Al-Qur’an.</p>
+    <p style="font-weight:bold;color:var(--green)">Wassalamu’alaikum warahmatullahi wabarakatuh.</p>
+
+    <div class="footer">Ahmad Faiz</div>
+  </div>
+
+<script>
+  // Ambil nama dari URL
+  function getNamaFromUrl(){
+    const p=new URLSearchParams(window.location.search);
+    return p.get('nama')?decodeURIComponent(p.get('nama')):"";
+  }
+  const nama=getNamaFromUrl();
+  if(nama) document.getElementById('namaTamuSplash').textContent=nama;
+
+  // Countdown
+  function updateCountdown(){
+    const eventDate=new Date('2025-09-30T13:00:00+02:00');
+    const now=new Date();
+    const diff=eventDate-now;
+    const el=document.getElementById('countdown');
+    if(diff<=0){el.textContent='Acara telah dimulai!';return;}
+    const d=Math.floor(diff/(1000*60*60*24));
+    const h=Math.floor((diff/(1000*60*60))%24);
+    const m=Math.floor((diff/(1000*60))%60);
+    const s=Math.floor((diff/1000)%60);
+    el.textContent=`${d}h ${h}j ${m}m ${s}d`;
+  }
+  setInterval(updateCountdown,1000);
+  updateCountdown();
+
+  // Splash hide + hero & konten fade-in per bagian
+  document.getElementById('btnSplash').addEventListener('click',()=>{
+    document.getElementById('splash').style.opacity=0;
+    setTimeout(()=>{
+      document.getElementById('splash').style.display='none';
+      
+      // hero fade-in
+      const hero=document.querySelector('.hero');
+      hero.style.display='block';
+      hero.classList.add('fade-in');
+
+      // konten undangan fade-in per bagian setelah hero animasi
+      setTimeout(()=>{
+        const main=document.getElementById('mainUndangan');
+        main.style.display='block';
+
+        const parts = main.querySelectorAll("blockquote, p, .info-box, .masjid-box, iframe.map, .footer");
+        parts.forEach((el, i)=>{
+          setTimeout(()=>{
+            el.classList.add('fade-seq');
+          }, i * 400); // jeda 0.4 detik antar bagian
+        });
+      },1000); // durasi animasi hero
+
+    },800); // delay fade-out splash
+    document.getElementById('bgMusic').play();
+  });
+
+  // Scroll effects parallax hero
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const heroBg = document.querySelector('.hero-bg');
+    if(heroBg){
+      heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+    }
+  });
+</script>
+</body>
+</html>
