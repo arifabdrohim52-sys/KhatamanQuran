@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Tasyakuran Ahmad Faiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lateef&display=swap" rel="stylesheet" />
+  <style>
+    #splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: url('photo_2025-09-24_15-59-02.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .7s;
+    }
+
+    .arabic {
+      font-family: 'Lateef', serif;
+      font-size: 1.4em;
+      direction: rtl;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 8px;
+      font-style: normal;
+      line-height: 1.2;
+      max-height: 2.4em;
+    }
+
+    blockquote small {
+      font-style: normal;
+    }
+
+    #splash .splash-content {
+      position: relative;
+      background: #ffffffdd;
+      border-radius: 20px;
+      padding: 20px 18px;
+      text-align: center;
+      max-width: 300px;
+      box-shadow: 0 8px 32px #0002;
+      animation: float 3s ease-in-out infinite alternate, fadeIn .8s ease;
+    }
+    @keyframes float{0%{transform:translateY(0)}100%{transform:translateY(-10px)}}
+    @keyframes fadeIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+    #splash .splash-content h1{font-size:1.2em;color:#059669;margin:10px 0;}
+    #splash .splash-content button{
+      background:#059669;color:#fff;border:none;
+      padding:8px 20px;border-radius:10px;font-size:.95em;
+      cursor:pointer;box-shadow:0 4px 14px #05966966;
+      transition:transform .2s,background .3s;
+    }
+    #splash .splash-content button:hover{background:#065f46;transform:scale(1.05)}
+    #splash .splash-content img {
+      margin-bottom: 10px !important;
+      width: 70px !important;
+      height: 70px !important;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 16px #05966944;
+      border: 3px solid #a7f3d0;
+    }
+    img[src="photo_2025-09-24_16-25-04.jpg"] {
+      width: 220px !important;
+      height: 220px !important;
+      max-width: 98vw;
+      max-height: 60vh;
+    }
+    #kepadaYth {
+      margin: 18px 0 12px 0 !important;
+      font-weight: bold;
+      color: #059669;
+      font-size: 1.08em;
+      letter-spacing: 0.2px;
+      /* background removed */
+      border-radius: 0;
+      padding: 6px 0 4px 0;
+      box-shadow: none;
+      display: block;
+    }
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg,#f0fdf4 0%,#e0f2fe 100%);
+      color: #065f46;
+      min-height: 100vh;
+    }
+    .slide-container {
+      max-width: 420px;
+      margin: 40px auto 0 auto;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 8px 32px #05966922;
+      overflow: hidden;
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 32px 0;
+    }
+    .slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 340px;
+      padding: 36px 28px 18px 28px;
+      text-align: center;
+      animation: fadeIn .7s;
+    }
+    .slide.active.slide-center {
+      justify-content: center !important;
+      min-height: 70vh !important;
+    }
+    .slide.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide blockquote {
+      font-size: 1.1em;
+      color: #059669;
+      background: #e0f2fe;
+      padding: 18px 16px;
+      border-radius: 14px;
+      margin: 0 0 18px 0;
+      font-style: italic;
+      line-height: 1.7;
+    }
+    .slide .info {
+      font-size: 1.08em;
+      margin: 10px 0 0 0;
+      color: #065f46;
+    }
+    .slide .emoji {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+    .slide-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .slide-nav button {
+      background: #a7f3d0;
+      border: none;
+      border-radius: 50%;
+      width: 18px; height: 18px;
+      cursor: pointer;
+      transition: background .2s;
+      outline: none;
+    }
+    .slide-nav button.active {
+      background: #059669;
+    }
+    .slide-btns {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto;
+      margin-top: 18px;
+    }
+    .slide-btns.only-next {
+      justify-content: flex-end;
+    }
+    .slide-btns button {
+      background: #059669;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 22px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #05966922;
+      transition: background .2s;
+    }
+    .slide-btns button:disabled {
+      background: #a7f3d0;
+      color: #065f46;
+      cursor: default;
+    }
+    @media (max-width: 600px) {
+      .slide-container { max-width: 98vw; }
+      .slide { padding: 22px 6vw 12px 6vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Splash Tetap -->
+  <audio id="bgMusic" src="Musik.mp3" loop></audio>
+  <div id="splash">
+    <div class="splash-content">
+      <img src="photo_2025-09-24_16-25-04.jpg" alt="Foto Faiz" />
+      <h1 style="margin-bottom: 0; font-size: 2em; font-weight: bold; text-align: center;">
+        Tasyakuran<br>Ahmad Faiz
+      </h1>
+      <h2 style="margin-top: 0.2em; font-size: 1em; font-weight: normal; text-align: center; color: #555;">
+        Dalam rangka Khataman Qiraat Imam 'Ashim <br>
+        <small>Riwayat Syu'bah & Hafs</small>
+      </h2>
+      <div id="kepadaYth" style="margin-bottom:10px;font-weight:bold;color:#065f46">
+        Kepada Yth.<br>
+        <span id="namaTamuSplash"></span>
+      </div>
+      <button id="btnSplash">Buka Undangan</button>
+      <p style="font-size:.85em;color:#059669">Semoga kehadiran Anda membawa keberkahan untuk majelis ini.</p>
+    </div>
+  </div>
+
+  <!-- Slide Komik Undangan -->
+  <div class="slide-container" id="slideContainer" style="display:none;">
+  <div class="slide active slide-center" style="position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;z-index:0;background:
+        linear-gradient(to top,rgba(34,34,34,0.78) 0%,rgba(255,255,255,0.08) 70%,rgba(255,255,255,0) 100%),
+        url('Masjidtaqwa.png') center center/cover no-repeat;"></div>
+      <blockquote style="position:relative;z-index:2;">Sebelumnya, Syekh Rabī‘ Muḥammad ‘Abd al-Raḥmān adalah Muqri Tahfidz Markaz Syuun Quran lil Ma'ahid Al-Azhariyah. Saya pertama kali setor dengan beliau di Markaz Tahfiz Masjid Jami‘ al-Raḥmān al-Raḥīm di bawah naungan kementrian Wakaf Mesir tahun 2020.<br>Sempat berhenti karena lockdown Corona, lalu lanjut lagi tahun 2022 di Masjid al-Taqwa, Nadi Sikkah.</blockquote>
+    </div>
+    <div class="slide">
+  <div style="position:absolute;inset:0;z-index:0;
+    background:
+      linear-gradient(to top,rgba(34,34,34,0.78) 0%,rgba(255,255,255,0.08) 70%,rgba(255,255,255,0) 100%),
+      url('Foto Faiz halaman depan.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;"></div>
+  <blockquote style="position:relative;z-index:2;margin-top:110px;">Alhamdulillah, tahun 2023 saya khatam pertama kali dengan riwayat Ḥafṣ.<br>Dan pada 2025 ini, khatam kedua kalinya dengan jamak riwayat Ḥafṣ dan Syu‘bah.<br>Selain itu, saya juga sudah melewati ujian al-Qur’an, dars tajwīd (Tuḥfah dan Jazariyyah), serta ujian tajwīd.</blockquote>
+    </div>
+    <div class="slide">
+      <div class="emoji">🕌</div>
+      <blockquote>
+        <span class="arabic">تَعَلَّمَ عُمَرُ سورةَ البقرة في اثنتي عشرةَ سنةً،<br>فلمّا ختمها نَحَرَ جَزورًا.</span>
+        <div style="text-align:center;">
+          <small>
+            “Sayyidina Umar RA mempelajari Surat Al-Baqarah selama 12 tahun, lalu menyembelih unta saat khatam.” <br>
+            (Riwayat Al-Baihaqi dalam Syu'ab Al-Iman)
+          </small>
+        </div>
+      </blockquote>
+  <blockquote style="background:none;padding-left:0;padding-right:0;box-shadow:none;">Sebagai ungkapan syukur, insya Allah akan diadakan tasyakuran pada:</blockquote>
+      <div class="event-info-modern" style="margin:18px 0 0 0;display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;width:100%;max-width:340px;background:rgba(240,253,244,0.92);border-radius:12px;padding:14px 16px 10px 16px;box-shadow:0 2px 8px #05966911;flex-direction:column;">
+          <span style="font-size:1.01em;color:#059669;font-weight:600;letter-spacing:0.1px;text-align:center;width:100%;">Hari, Tanggal</span>
+          <span style="font-size:1.22em;color:#065f46;font-weight:700;line-height:1.2;margin-top:2px;text-align:center;width:100%;">Senin, 6 Okt 2025</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;width:100%;max-width:340px;background:rgba(240,253,244,0.92);border-radius:12px;padding:14px 16px 10px 16px;box-shadow:0 2px 8px #05966911;flex-direction:column;">
+          <span style="font-size:1.01em;color:#059669;font-weight:600;letter-spacing:0.1px;text-align:center;width:100%;">Waktu</span>
+          <span style="font-size:1.22em;color:#065f46;font-weight:700;line-height:1.2;margin-top:2px;text-align:center;width:100%;">13:30 CLT <span style='font-weight:400;font-size:.97em;'>(on time)</span></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;width:100%;max-width:340px;background:rgba(240,253,244,0.92);border-radius:12px;padding:14px 16px 10px 16px;box-shadow:0 2px 8px #05966911;flex-direction:column;">
+          <span style="font-size:1.01em;color:#059669;font-weight:600;letter-spacing:0.1px;text-align:center;width:100%;">Tempat</span>
+          <span style="font-size:1.22em;color:#065f46;font-weight:700;line-height:1.2;margin-top:2px;text-align:center;width:100%;">Masjid At-Taqwa, Nadi Sikkah</span>
+        </div>
+      </div>
+      <div style="margin:10px 0 12px 0;">
+        <a href="https://maps.app.goo.gl/SsoifTZnM1EtmGh38?g_st=aw" target="_blank" rel="noopener" style="
+          display:inline-block;
+          background:linear-gradient(90deg,#34a853,#0f9d58);
+          color:#fff;
+          font-weight:700;
+          text-decoration:none;
+          padding:11px 28px;
+          border-radius:16px;
+          box-shadow:0 4px 16px #05966933;
+          font-size:1.08em;
+          transition:background .2s,transform .18s;
+        " onmouseover="this.style.background='linear-gradient(90deg,#0f9d58,#34a853)';this.style.transform='scale(1.05)';" onmouseout="this.style.background='linear-gradient(90deg,#34a853,#0f9d58)';this.style.transform='scale(1)';">
+          Lihat di Google Maps
+        </a>
+      </div>
+      <img src="Masjidtaqwa.png" alt="Masjid At-Taqwa" style="width:90%;max-width:180px;display:block;margin:10px auto 8px auto;border-radius:16px;box-shadow:0 4px 16px #05966922;object-fit:cover;" />
+      <blockquote style="margin-top:12px;background:#f0fdf4;color:#065f46;">Doakan semoga Allah memberi istiqamah dalam memurajaah, memahami, dan mengamalkan al-Qur’an. Kehadiran antum sangat berarti.</blockquote>
+      <div id="countdown" style="margin:18px auto 0 auto;font-size:1em;font-weight:600;color:#059669;background:rgba(255,255,255,0.82);backdrop-filter:blur(2px);padding:7px 18px 7px 18px;border-radius:16px;max-width:320px;box-shadow:0 4px 18px #05966922,0 1.5px 8px #fff8;display:block;z-index:10;letter-spacing:0.2px;"></div>
+
+      <div id="daftarHadirKomik" style="margin:18px auto 0 auto;max-width:340px;background:rgba(255,255,255,0.93);border-radius:16px;box-shadow:0 4px 18px #05966922;padding:18px 12px 18px 12px;text-align:center;backdrop-filter:blur(2px);">
+        <h3 style="margin-bottom:12px;font-size:1.18em;font-weight:700;color:#059669;letter-spacing:0.5px;">Daftar Hadir</h3>
+        <form id="rsvpFormKomik" style="max-width:320px;margin:0 auto 10px auto;text-align:left;">
+          <label style="font-weight:600;color:#065f46;font-size:.98em;">Nama</label>
+          <input type="text" name="name" placeholder="Nama Antum" required style="margin-bottom:0.6rem;width:100%;padding:7px 8px;border-radius:7px;border:1px solid #a7f3d0;">
+          <label style="font-weight:600;color:#065f46;font-size:.98em;">Kehadiran</label>
+          <select name="attend" required style="margin-bottom:0.6rem;width:100%;padding:7px 8px;border-radius:7px;border:1px solid #a7f3d0;">
+            <option value="">Apakah Antum akan hadir?</option>
+            <option value="Hadir">Insya Allah, Hadir</option>
+            <option value="Tidak Hadir">Ma'leys, Tidak Hadir</option>
+            <option value="Hadir tapi agak telat">Hadir tapi agak telat</option>
+          </select>
+          <label style="font-weight:600;color:#065f46;font-size:.98em;">Ucapan/Doa</label>
+          <textarea name="msg" placeholder="Ucapan atau doa terbaik antum" style="margin-bottom:0.7rem;width:100%;padding:7px 8px;border-radius:7px;border:1px solid #a7f3d0;"></textarea>
+          <button type="submit" id="btnKonfirmasiKomik" style="width:100%;background:#059669;color:#fff;font-weight:600;font-size:1em;padding:0.6rem 0;border-radius:8px;box-shadow:0 2px 8px #05966922;transition:background .2s;">Kirim Konfirmasi</button>
+        </form>
+        <div id="messageKomik" style="margin-top:0.7rem;font-size:.98em;"></div>
+        <div style="margin-top:1.5rem">
+          <h4 style="font-size:1em;font-weight:700;color:#059669;margin-bottom:0.7rem;">Daftar Kehadiran</h4>
+          <div id="guestListKomik" style="overflow-x:auto;font-size:.97em;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-btns" id="slideBtns" style="position:relative;z-index:3;">
+      <button id="prevBtn" style="display:none;">&larr; Sebelumnya</button>
+      <button id="nextBtn">Selanjutnya &rarr;</button>
+    </div>
+    <div class="slide-nav" id="slideNav" style="position:relative;z-index:3;"></div>
+  </div>
+
+  <script>
+    // Ambil nama dari URL dan tampilkan setelah DOM siap
+    window.addEventListener('DOMContentLoaded', function() {
+      function getNamaFromUrl(){
+        const p=new URLSearchParams(window.location.search);
+        return p.get('nama')?decodeURIComponent(p.get('nama')):"";
+      }
+      const nama=getNamaFromUrl();
+      var namaTamu = document.getElementById('namaTamuSplash');
+      if(namaTamu){
+        namaTamu.textContent = nama ? nama : '-';
+      }
+      // Jika sudah di slide ketiga saat load, langsung tampilkan daftar hadir
+      if (typeof loadGuestListKomik === 'function') {
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        slides.forEach((slide, i) => { if(slide.classList.contains('active')) currentSlide = i; });
+        if(currentSlide === 2) loadGuestListKomik();
+      }
+    });
+    // Splash logic
+    document.getElementById('btnSplash').onclick = function() {
+      document.getElementById('splash').style.opacity = 0;
+      // Play music
+      var audio = document.getElementById('bgMusic');
+      if(audio) { audio.play(); }
+      setTimeout(function(){
+        document.getElementById('splash').style.display = 'none';
+        document.getElementById('slideContainer').style.display = 'flex';
+      }, 700);
+    };
+
+    // Slide logic
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideNav = document.getElementById('slideNav');
+
+    function showSlide(idx) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === idx);
+      });
+      // Tombol navigasi sesuai slide
+      const slideBtns = document.getElementById('slideBtns');
+      if(idx === 0) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = '';
+        if(slideBtns) slideBtns.classList.add('only-next');
+      } else if(idx === slides.length - 1) {
+        prevBtn.style.display = '';
+        nextBtn.style.display = 'none';
+        if(slideBtns) slideBtns.classList.remove('only-next');
+      } else {
+        prevBtn.style.display = '';
+        nextBtn.style.display = '';
+        if(slideBtns) slideBtns.classList.remove('only-next');
+      }
+      // Update nav dots
+      slideNav.innerHTML = '';
+      for(let i=0;i<slides.length;i++){
+        const btn = document.createElement('button');
+        btn.className = i === idx ? 'active' : '';
+        btn.onclick = ()=>showSlide(i);
+        slideNav.appendChild(btn);
+      }
+      // Tampilkan daftar hadir otomatis jika di slide ketiga
+      if (typeof loadGuestListKomik === 'function' && idx === 2) {
+        loadGuestListKomik();
+      }
+    }
+    prevBtn.onclick = ()=>{ if(currentSlide>0){ currentSlide--; showSlide(currentSlide); } };
+    nextBtn.onclick = ()=>{ if(currentSlide<slides.length-1){ currentSlide++; showSlide(currentSlide); } };
+    showSlide(currentSlide);
+    // === Komik Slide RSVP/Daftar Hadir ===
+    const API_URL_KOMIK = "https://script.google.com/macros/s/AKfycbyUK7rIO0aq_u7h0FiINAPprDYd8DNmeXGVn5nNZUDdamLT7bbX9nn9GUe68U7ChPtt1A/exec";
+    const rsvpFormKomik = document.getElementById("rsvpFormKomik");
+    const messageKomik = document.getElementById("messageKomik");
+    const guestListKomik = document.getElementById("guestListKomik");
+    const btnKonfirmasiKomik = document.getElementById("btnKonfirmasiKomik");
+
+    function showMessageKomik(text, isError=false){
+      if(!messageKomik) return;
+      messageKomik.style.color = isError ? "red" : "green";
+      messageKomik.textContent = text;
+    }
+
+    if(rsvpFormKomik){
+      rsvpFormKomik.addEventListener("submit", function(e){
+        e.preventDefault();
+        btnKonfirmasiKomik.disabled = true;
+        const oldText = btnKonfirmasiKomik.textContent;
+        btnKonfirmasiKomik.textContent = "Menunggu...";
+        const data = {
+          name: rsvpFormKomik.name.value.trim(),
+          attend: rsvpFormKomik.attend.value,
+          msg: rsvpFormKomik.msg.value.trim()
+        };
+        if(!data.name){ showMessageKomik("Mohon isi nama Antum.", true); btnKonfirmasiKomik.disabled = false; btnKonfirmasiKomik.textContent = oldText; return; }
+        fetch(API_URL_KOMIK, {
+          method: "POST",
+          body: JSON.stringify(data)
+        })
+        .then(r => r.json())
+        .then(res => {
+          if(res.result === "success"){
+            showMessageKomik("✅ Konfirmasi berhasil, ditunggu kehadirannya!");
+            rsvpFormKomik.reset();
+            loadGuestListKomik(); // langsung refresh daftar hadir
+          } else {
+            showMessageKomik("Gagal mengirim konfirmasi.", true);
+          }
+        })
+        .catch(()=>{
+          showMessageKomik("Terjadi error. Coba lagi.", true);
+        })
+        .finally(()=>{
+          btnKonfirmasiKomik.disabled = false;
+          btnKonfirmasiKomik.textContent = oldText;
+        });
+      });
+    }
+
+    function loadGuestListKomik(){
+      if(!guestListKomik) return;
+      guestListKomik.innerHTML = "Memuat daftar ...";
+      fetch(API_URL_KOMIK)
+        .then(r=>r.json())
+        .then(data=>{
+          if(data && data.length){
+            let html = `<table style="width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px #05966911;">
+              <tr style='background:#e0f2fe;'>
+                <th style="padding:10px 8px;border-bottom:2px solid #a7f3d0;color:#059669;font-size:1.05rem;">Nama</th>
+                <th style="padding:10px 8px;border-bottom:2px solid #a7f3d0;color:#059669;font-size:1.05rem;">Kehadiran</th>
+                <th style="padding:10px 8px;border-bottom:2px solid #a7f3d0;color:#059669;font-size:1.05rem;">Ucapan/Doa</th>
+              </tr>`;
+            data.forEach(row => {
+              html += `<tr>
+                <td style='padding:8px 6px;border-bottom:1px solid #f0fdf4;'>${row.name}</td>
+                <td style='padding:8px 6px;border-bottom:1px solid #f0fdf4;'>${row.attend}</td>
+                <td style='padding:8px 6px;border-bottom:1px solid #f0fdf4;'>${row.msg||""}</td>
+              </tr>`;
+            });
+            html += "</table>";
+            guestListKomik.innerHTML = html;
+          } else {
+            guestListKomik.innerHTML = '<div style="color:#888;font-size:.97em;">Belum ada konfirmasi hadir.</div>';
+          }
+        })
+        .catch(()=>{
+          guestListKomik.innerHTML = "<div style='color:#b91c1c;font-weight:600;'>Gagal memuat daftar kehadiran.</div>";
+        });
+    }
+    loadGuestListKomik();
+    function updateCountdown() {
+      var countDownDate = new Date('2025-10-06T13:30:00+02:00').getTime(); // CLT = UTC+2
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      var cd = document.getElementById('countdown');
+      if (!cd) return;
+      if (distance < 0) {
+        cd.innerHTML = 'Acara telah dimulai!';
+        return;
+      }
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      cd.innerHTML = `
+        <span style="font-weight:700;color:#059669;font-size:1.08em;letter-spacing:0.5px;">Hitung Mundur Acara</span><br>
+        <span style="display:inline-block;margin-top:6px;">
+          <span style="background:#e0f2fe;color:#059669;font-weight:bold;padding:4px 10px 4px 10px;border-radius:10px;margin:0 2px;min-width:38px;display:inline-block;">${days}<span style='font-size:.85em;font-weight:400;margin-left:2px;'>hari</span></span>
+          <span style="background:#f0fdf4;color:#059669;font-weight:bold;padding:4px 10px 4px 10px;border-radius:10px;margin:0 2px;min-width:38px;display:inline-block;">${hours}<span style='font-size:.85em;font-weight:400;margin-left:2px;'>jam</span></span>
+          <span style="background:#e0f2fe;color:#059669;font-weight:bold;padding:4px 10px 4px 10px;border-radius:10px;margin:0 2px;min-width:38px;display:inline-block;">${minutes}<span style='font-size:.85em;font-weight:400;margin-left:2px;'>mnt</span></span>
+          <span style="background:#f0fdf4;color:#059669;font-weight:bold;padding:4px 10px 4px 10px;border-radius:10px;margin:0 2px;min-width:38px;display:inline-block;">${seconds}<span style='font-size:.85em;font-weight:400;margin-left:2px;'>dtk</span></span>
+        </span>
+      `;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
